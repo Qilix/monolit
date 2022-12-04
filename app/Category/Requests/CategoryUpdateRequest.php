@@ -10,7 +10,7 @@ class CategoryUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|max:255',
+            'name' => 'string|nullable|max:255',
             'parent_id' => 'integer|nullable',
         ];
     }

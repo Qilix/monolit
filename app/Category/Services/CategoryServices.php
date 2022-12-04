@@ -22,9 +22,9 @@ class CategoryServices
         return $category;
     }
 
-    public function updateCategory($id, CategoryQueries $quaries, CategoryDTO $dto): Category
+    public function updateCategory($id,Category $categoryById, CategoryDTO $dto): Category
     {
-        $category = $quaries->getCategoryById($id);
+        $category = $categoryById;
 
         if($category->parent_id === $dto->parent_id and $category->parent_id !== Null){
             throw new ParentIdException();

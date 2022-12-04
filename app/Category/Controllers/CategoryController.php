@@ -42,7 +42,8 @@ class CategoryController extends Controller{
     public function CategoryUpdate($id, CategoryUpdateRequest $request, CategoryPresenter $presenter, CategoryServices $service, CategoryQueries $queries)
     {
         $dto = CategoryFactory::fromRequest($request);
-        $model = $service->updateCategory($id, $queries, $dto);
+        $category = $queries->getCategoryById($this->include, $id);
+        $model = $service->updateCategory($id, $category, $dto);
         return Response::json($presenter->present($model));
     }
 
